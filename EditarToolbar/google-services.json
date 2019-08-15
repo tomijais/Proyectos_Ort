@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "158868368900",
+    "firebase_url": "https://listviewale.firebaseio.com",
+    "project_id": "listviewale",
+    "storage_bucket": "listviewale.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158868368900:android:542fcd1cc3e0a62e",
+        "android_client_info": {
+          "package_name": "com.jais.editartoolbar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158868368900-a2ha7ie02l40rark6eai2g6iip15uppc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUrk_37mHT7CIIew8IZDErTp88mIKbLVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158868368900-a2ha7ie02l40rark6eai2g6iip15uppc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
