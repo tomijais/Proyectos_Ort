@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -31,12 +32,18 @@ public class UserInterfaz extends AppCompatActivity {
     private BluetoothAdapter btAdapter = null;
     private BluetoothSocket btSocket = null;
     private StringBuilder DataStringIN = new StringBuilder();
-    private ConnectedThread MyConexionBT;
+    public ConnectedThread MyConexionBT;
     // Identificador unico de servicio - SPP UUID
     private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     // String para la direccion MAC
     private static String address = null;
     //-------------------------------------------
+
+    public String Instagram;
+    public String Whatsapp;
+    public String Facebook;
+    public String Otras;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +55,20 @@ public class UserInterfaz extends AppCompatActivity {
         IdApagar = (Button) findViewById(R.id.IdApagar);
         IdDesconectar = (Button) findViewById(R.id.IdDesconectar);
         IdBufferIn = (TextView) findViewById(R.id.IdBufferIn);
+
+
+
+        Bundle WhatsappRecibido;
+        WhatsappRecibido = this.getIntent().getExtras();
+
+        String NotificacionWhatsappRecibida = WhatsappRecibido.getString("Whatsapp");
+
+
+
+
+
+
+
 
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {
