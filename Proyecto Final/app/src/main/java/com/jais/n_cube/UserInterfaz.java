@@ -3,7 +3,9 @@ package com.jais.n_cube;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,7 +46,6 @@ public class UserInterfaz extends AppCompatActivity {
     public String Facebook;
     public String Otras;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,15 +58,14 @@ public class UserInterfaz extends AppCompatActivity {
         IdBufferIn = (TextView) findViewById(R.id.IdBufferIn);
 
 
-
-        Bundle WhatsappRecibido;
-        WhatsappRecibido = this.getIntent().getExtras();
-
-        String NotificacionWhatsappRecibida = WhatsappRecibido.getString("Whatsapp");
+        String NotificacionWhatsappCargada =  cargarPreferenciasWhatsapp();
 
 
-
-
+        if(NotificacionWhatsappCargada.equals("NotificacionWhatsapp"))
+        {
+            // MyConexionBT.write("3");
+            Toast.makeText(this, "funciona 2", Toast.LENGTH_SHORT).show();
+        }
 
 
 
@@ -231,4 +231,16 @@ public class UserInterfaz extends AppCompatActivity {
             }
         }
     }
+
+    private String cargarPreferenciasWhatsapp()
+    {
+        SharedPreferences preferencewpp = getSharedPreferences
+                ("credencialeswpp", Context.MODE_PRIVATE);
+        String NotificacionWhatsapp = preferencewpp.getString("NotificacionWhatsapp", "ErrorNotificacionWhatsapp");
+
+        Toast.makeText(this, "Cargar Preferencias", Toast.LENGTH_SHORT).show();
+        return NotificacionWhatsapp;
+    }
+
 }
+

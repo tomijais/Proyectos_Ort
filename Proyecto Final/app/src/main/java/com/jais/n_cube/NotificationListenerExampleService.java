@@ -41,7 +41,7 @@ public class NotificationListenerExampleService extends NotificationListenerServ
         int notificationCode = matchNotificationCode(sbn);
 
         if(notificationCode != InterceptedNotificationCode.OTHER_NOTIFICATIONS_CODE){
-            Intent intent = new  Intent("com.github.chagall.notificationlistenerexample");
+            Intent intent = new  Intent("com.jais.n_cube.NotificationListenerExampleService");
             intent.putExtra("Notification Code", notificationCode);
             sendBroadcast(intent);
         }
@@ -58,7 +58,7 @@ public class NotificationListenerExampleService extends NotificationListenerServ
             if(activeNotifications != null && activeNotifications.length > 0) {
                 for (int i = 0; i < activeNotifications.length; i++) {
                     if (notificationCode == matchNotificationCode(activeNotifications[i])) {
-                        Intent intent = new  Intent("com.github.chagall.notificationlistenerexample");
+                        Intent intent = new  Intent("com.jais.n_cube.NotificationListenerExampleService");
                         intent.putExtra("Notification Code", notificationCode);
                         sendBroadcast(intent);
                         break;

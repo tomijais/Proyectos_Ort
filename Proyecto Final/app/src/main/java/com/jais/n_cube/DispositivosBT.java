@@ -2,6 +2,7 @@ package com.jais.n_cube;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -132,17 +133,10 @@ DispositivosBT extends AppCompatActivity {
                 break;
             case NotificationListenerExampleService.InterceptedNotificationCode.WHATSAPP_CODE:
                 Toast.makeText(this, "WHATSAPP", Toast.LENGTH_SHORT).show();
-               // Intent Whatsapp = new Intent(getApplicationContext(), UserInterfaz.class);
-               // Whatsapp.putExtra("WHATSAPP","WHATSAPP");
+
+                guardarPreferenciasWhatssapp();
 
 
-                Bundle NotificacionWhatsappEnviada;
-                NotificacionWhatsappEnviada = new Bundle();
-                NotificacionWhatsappEnviada.putString("Whatsapp","Whatsapp");
-                Intent UserInterfaz;
-                UserInterfaz = new Intent(DispositivosBT.this, UserInterfaz.class);
-                UserInterfaz.putExtras(NotificacionWhatsappEnviada);
-                Log.d("jais","01");
 
                 break;
             case NotificationListenerExampleService.InterceptedNotificationCode.OTHER_NOTIFICATIONS_CODE:
@@ -253,6 +247,19 @@ DispositivosBT extends AppCompatActivity {
 
             }
         }
+    }
+
+    private void guardarPreferenciasWhatssapp() {
+        SharedPreferences preferencewpp = getSharedPreferences
+                ("credencialeswpp", Context.MODE_PRIVATE);
+        String NotificacionWhatsapp;
+
+        NotificacionWhatsapp = "NotificacionWhatsapp";
+
+        SharedPreferences.Editor editorwpp = preferencewpp.edit();
+        editorwpp.putString("NotificacionWhatsapp", NotificacionWhatsapp);
+        Toast.makeText(this, "guardarPreferencias", Toast.LENGTH_SHORT).show();
+        editorwpp.commit();
     }
 
 
