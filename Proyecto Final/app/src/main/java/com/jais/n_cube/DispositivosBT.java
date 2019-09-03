@@ -24,6 +24,10 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 
 public class
 
@@ -135,6 +139,8 @@ DispositivosBT extends AppCompatActivity {
                 Toast.makeText(this, "WHATSAPP", Toast.LENGTH_SHORT).show();
 
                 guardarPreferenciasWhatssapp();
+
+                EventBus.getDefault().post(new Message("Hola"));
 
 
 
@@ -263,7 +269,30 @@ DispositivosBT extends AppCompatActivity {
     }
 
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+
+        EventBus.getDefault().post(new Message("Hola"));
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+
+
 }
+
+
+
+
+
 
 
 

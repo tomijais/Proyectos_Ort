@@ -18,6 +18,10 @@ import android.widget.Toast;
 import com.jais.n_cube.DispositivosBT;
 import com.jais.n_cube.R;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -66,6 +70,8 @@ public class UserInterfaz extends AppCompatActivity {
             // MyConexionBT.write("3");
             Toast.makeText(this, "funciona 2", Toast.LENGTH_SHORT).show();
         }
+
+
 
 
 
@@ -242,5 +248,27 @@ public class UserInterfaz extends AppCompatActivity {
         return NotificacionWhatsapp;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+
+    }
+   //TODO
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(Message event)
+    {
+        Toast.makeText(this, event.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
 }
+
+
+
 
