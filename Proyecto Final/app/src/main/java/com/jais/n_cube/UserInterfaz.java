@@ -45,10 +45,12 @@ public class UserInterfaz extends AppCompatActivity {
     private static String address = null;
     //-------------------------------------------
 
-    public String Instagram;
-    public String Whatsapp;
-    public String Facebook;
-    public String Otras;
+
+    public String message;
+    public String instagram;
+    public String whatsapp;
+    public String facebook;
+    public String otras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,22 +58,10 @@ public class UserInterfaz extends AppCompatActivity {
         setContentView(R.layout.activity_user_interfaz);
         //2)
         //Enlaza los controles con sus respectivas vistas
-        IdEncender = (Button) findViewById(R.id.IdEncender);
-        IdApagar = (Button) findViewById(R.id.IdApagar);
-        IdDesconectar = (Button) findViewById(R.id.IdDesconectar);
-        IdBufferIn = (TextView) findViewById(R.id.IdBufferIn);
-
-
-        String NotificacionWhatsappCargada =  cargarPreferenciasWhatsapp();
-
-
-        if(NotificacionWhatsappCargada.equals("NotificacionWhatsapp"))
-        {
-            // MyConexionBT.write("3");
-            Toast.makeText(this, "funciona 2", Toast.LENGTH_SHORT).show();
-        }
-
-
+        IdEncender =  findViewById(R.id.IdEncender);
+        IdApagar =  findViewById(R.id.IdApagar);
+        IdDesconectar =  findViewById(R.id.IdDesconectar);
+        IdBufferIn = findViewById(R.id.IdBufferIn);
 
 
 
@@ -238,15 +228,6 @@ public class UserInterfaz extends AppCompatActivity {
         }
     }
 
-    private String cargarPreferenciasWhatsapp()
-    {
-        SharedPreferences preferencewpp = getSharedPreferences
-                ("credencialeswpp", Context.MODE_PRIVATE);
-        String NotificacionWhatsapp = preferencewpp.getString("NotificacionWhatsapp", "ErrorNotificacionWhatsapp");
-
-        Toast.makeText(this, "Cargar Preferencias", Toast.LENGTH_SHORT).show();
-        return NotificacionWhatsapp;
-    }
 
     @Override
     public void onStart() {
@@ -254,12 +235,34 @@ public class UserInterfaz extends AppCompatActivity {
         EventBus.getDefault().register(this);
 
     }
-   //TODO
+
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(Message event)
     {
-        Toast.makeText(this, event.getMessage(), Toast.LENGTH_SHORT).show();
+        message = event.getMessage();
+
+        if(message.equals("FB"))
+        {
+             MyConexionBT.write("FB");
+            Toast.makeText(this, "FB", Toast.LENGTH_SHORT).show();
+        }
+        if(message.equals("IG"))
+        {
+             MyConexionBT.write("IG");
+            Toast.makeText(this, "IG", Toast.LENGTH_SHORT).show();
+        }
+        if(message.equals("WP"))
+        {
+             MyConexionBT.write("WP");
+            Toast.makeText(this, "WP", Toast.LENGTH_SHORT).show();
+        }
+        if(message.equals("O"))
+        {
+             MyConexionBT.write("O");
+            Toast.makeText(this, "O", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
@@ -267,6 +270,15 @@ public class UserInterfaz extends AppCompatActivity {
         super.onStop();
         EventBus.getDefault().unregister(this);
     }
+
+
+
+
+
+
+
+
+
 }
 
 

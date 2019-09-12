@@ -54,6 +54,7 @@ DispositivosBT extends AppCompatActivity {
     private BluetoothAdapter mBtAdapter;
     private ArrayAdapter<String> mPairedDevicesArrayAdapter;
 
+    private String message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,31 +125,24 @@ DispositivosBT extends AppCompatActivity {
     private void changeInterceptedNotificationImage(int notificationCode){
         switch(notificationCode){
             case NotificationListenerExampleService.InterceptedNotificationCode.FACEBOOK_CODE:
-                Toast.makeText(this, "FACEBOOK", Toast.LENGTH_SHORT).show();
-                Intent Facebook = new Intent(getApplicationContext(), UserInterfaz.class);
-                Facebook.putExtra("FACEBOOK","FACEBOOK");
+                EventBus.getDefault().post(new Message("FB"));
+
 
                 break;
             case NotificationListenerExampleService.InterceptedNotificationCode.INSTAGRAM_CODE:
-                Toast.makeText(this, "INSTAGRAM", Toast.LENGTH_SHORT).show();
-                Intent Instagram = new Intent(getApplicationContext(), UserInterfaz.class);
-                Instagram.putExtra("INSTAGRAM","INSTAGRAM");
+                EventBus.getDefault().post(new Message("IG"));
+
 
                 break;
             case NotificationListenerExampleService.InterceptedNotificationCode.WHATSAPP_CODE:
-                Toast.makeText(this, "WHATSAPP", Toast.LENGTH_SHORT).show();
 
-                guardarPreferenciasWhatssapp();
-
-                EventBus.getDefault().post(new Message("Hola"));
-
+                EventBus.getDefault().post(new Message("WP"));
 
 
                 break;
             case NotificationListenerExampleService.InterceptedNotificationCode.OTHER_NOTIFICATIONS_CODE:
-                Toast.makeText(this, "OTRAS", Toast.LENGTH_SHORT).show();
-                Intent Otras = new Intent(getApplicationContext(), UserInterfaz.class);
-                Otras.putExtra("OTRAS","OTRAS");
+                EventBus.getDefault().post(new Message("O"));
+
 
                 break;
         }
@@ -255,35 +249,9 @@ DispositivosBT extends AppCompatActivity {
         }
     }
 
-    private void guardarPreferenciasWhatssapp() {
-        SharedPreferences preferencewpp = getSharedPreferences
-                ("credencialeswpp", Context.MODE_PRIVATE);
-        String NotificacionWhatsapp;
-
-        NotificacionWhatsapp = "NotificacionWhatsapp";
-
-        SharedPreferences.Editor editorwpp = preferencewpp.edit();
-        editorwpp.putString("NotificacionWhatsapp", NotificacionWhatsapp);
-        Toast.makeText(this, "guardarPreferencias", Toast.LENGTH_SHORT).show();
-        editorwpp.commit();
-    }
 
 
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-
-        EventBus.getDefault().post(new Message("Hola"));
-
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
-    }
 
 
 
