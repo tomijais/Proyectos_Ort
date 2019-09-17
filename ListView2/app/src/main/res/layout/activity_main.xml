@@ -6,20 +6,79 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btnAceptar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="384dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="27dp"
+        android:text="aceptar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bntBorrar"
+        app:layout_constraintStart_toEndOf="@+id/btnAgregar"
+        app:layout_constraintTop_toBottomOf="@+id/edtAddres"
+        tools:text="aceptar" />
+
+    <Button
+        android:id="@+id/btnAgregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:text="Agregar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.98"
+        tools:text="Agregar" />
+
+    <Button
+        android:id="@+id/bntBorrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="384dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="27dp"
+        android:text="Borrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bntEditar"
+        app:layout_constraintStart_toEndOf="@+id/btnAceptar"
+        app:layout_constraintTop_toBottomOf="@+id/edtAddres"
+        tools:text="Borrar" />
+
+    <Button
+        android:id="@+id/bntEditar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="384dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="27dp"
+        android:text="editar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bntBorrar"
+        app:layout_constraintTop_toBottomOf="@+id/edtAddres"
+        tools:text="editar" />
+
     <EditText
         android:id="@+id/edtMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="99dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="30dp"
         android:ems="10"
         android:hint="Intertar Mail"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/edtDNI"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtName" />
 
@@ -30,13 +89,13 @@
         android:layout_marginStart="99dp"
         android:layout_marginTop="112dp"
         android:layout_marginEnd="99dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="30dp"
         android:ems="10"
         android:hint="Insertar Nombre"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/edtMail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,14 +104,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="99dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="30dp"
         android:ems="10"
         android:hint="Intertar DNI"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/edtAddres"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtMail" />
 
@@ -61,42 +121,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="99dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="500dp"
         android:ems="10"
         android:hint="Insertar Direccion"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/btnAceptar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtDNI" />
 
-    <Button
-        android:id="@+id/btnAceptar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="223dp"
-        android:layout_marginTop="86dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="74dp"
-        android:text="aceptar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtAddres" />
-
     <ListView
         android:id="@+id/lv"
-        android:layout_width="370dp"
-        android:layout_height="627dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="52dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAceptar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
