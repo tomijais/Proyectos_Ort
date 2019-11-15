@@ -21,6 +21,7 @@ import com.jais.n_cube.R;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.michaelbel.bottomsheet.BottomSheet;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,7 +31,7 @@ import java.util.UUID;
 public class UserInterfaz extends AppCompatActivity {
 
     //1)
-    Button IdEncender, IdApagar,IdDesconectar;
+    Button IdEncender, IdApagar,IdDesconectar, btnColor;
     TextView IdBufferIn;
     //-------------------------------------------
     Handler bluetoothIn;
@@ -45,7 +46,7 @@ public class UserInterfaz extends AppCompatActivity {
     private static String address = null;
     //-------------------------------------------
 
-
+    //-------------------------------------------
     public String message;
     public String instagram;
     public String whatsapp;
@@ -62,8 +63,18 @@ public class UserInterfaz extends AppCompatActivity {
         IdApagar =  findViewById(R.id.IdApagar);
         IdDesconectar =  findViewById(R.id.IdDesconectar);
         IdBufferIn = findViewById(R.id.IdBufferIn);
+        btnColor = findViewById(R.id.btnColor);
 
+       final BottomSheet.Builder builder = new BottomSheet.Builder(this);
 
+        btnColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                builder.setTitle("My title");
+
+            }
+    });
 
 
         bluetoothIn = new Handler() {
@@ -263,6 +274,17 @@ public class UserInterfaz extends AppCompatActivity {
             Toast.makeText(this, "O", Toast.LENGTH_SHORT).show();
         }
 
+
+
+
+
+
+
+
+
+
+
+
     }
 
     @Override
@@ -270,13 +292,6 @@ public class UserInterfaz extends AppCompatActivity {
         super.onStop();
         EventBus.getDefault().unregister(this);
     }
-
-
-
-
-
-
-
 
 
 }

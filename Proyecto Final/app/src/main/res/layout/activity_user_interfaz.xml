@@ -56,4 +56,19 @@
         android:text="DESCONECTAR"
         android:textAlignment="center"
         android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btnColor"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_above="@+id/IdDesconectar"
+        android:layout_below="@+id/IdBufferIn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="126dp"
+        android:layout_marginEnd="121dp"
+        android:layout_marginBottom="66dp"
+        android:text="Cambiar Color de led"
+        android:visibility="visible" />
 </RelativeLayout>
