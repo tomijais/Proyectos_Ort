@@ -252,22 +252,22 @@ public class UserInterfaz extends AppCompatActivity {
 
         if(message.equals("FB"))
         {
-             MyConexionBT.write("FB");
+             MyConexionBT.write("D");
             Toast.makeText(this, "FB", Toast.LENGTH_SHORT).show();
         }
         if(message.equals("IG"))
         {
-             MyConexionBT.write("IG");
+             MyConexionBT.write("B");
             Toast.makeText(this, "IG", Toast.LENGTH_SHORT).show();
         }
         if(message.equals("WP"))
         {
-             MyConexionBT.write("WP");
+             MyConexionBT.write("A");
             Toast.makeText(this, "WP", Toast.LENGTH_SHORT).show();
         }
         if(message.equals("O"))
         {
-             MyConexionBT.write("O");
+             MyConexionBT.write("Y");
             Toast.makeText(this, "O", Toast.LENGTH_SHORT).show();
         }
 
