@@ -140,6 +140,12 @@ DispositivosBT extends AppCompatActivity {
 
 
                 break;
+                case NotificationListenerExampleService.InterceptedNotificationCode.YOUTUBE_CODE:
+
+                EventBus.getDefault().post(new Message("YT"));
+
+
+                break;
             case NotificationListenerExampleService.InterceptedNotificationCode.OTHER_NOTIFICATIONS_CODE:
                 EventBus.getDefault().post(new Message("O"));
 

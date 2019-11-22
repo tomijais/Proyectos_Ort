@@ -18,6 +18,8 @@ public class NotificationListenerExampleService extends NotificationListenerServ
         public static final String FACEBOOK_MESSENGER_PACK_NAME = "com.facebook.orca";
         public static final String WHATSAPP_PACK_NAME = "com.whatsapp";
         public static final String INSTAGRAM_PACK_NAME = "com.instagram.android";
+        public static final String YOUTUBE_PACK_NAME = "com.google.android.youtube";
+
     }
 
     /*
@@ -28,7 +30,8 @@ public class NotificationListenerExampleService extends NotificationListenerServ
         public static final int FACEBOOK_CODE = 1;
         public static final int WHATSAPP_CODE = 2;
         public static final int INSTAGRAM_CODE = 3;
-        public static final int OTHER_NOTIFICATIONS_CODE = 4; // We ignore all notification with code == 4
+        public static final int YOUTUBE_CODE = 4;
+        public static final int OTHER_NOTIFICATIONS_CODE = 5; // We ignore all notification with code == 4
     }
 
     @Override
@@ -80,6 +83,9 @@ public class NotificationListenerExampleService extends NotificationListenerServ
         }
         else if(packageName.equals(ApplicationPackageNames.WHATSAPP_PACK_NAME)){
             return(InterceptedNotificationCode.WHATSAPP_CODE);
+        }
+        else if(packageName.equals(ApplicationPackageNames.YOUTUBE_PACK_NAME)){
+            return(InterceptedNotificationCode.YOUTUBE_CODE);
         }
         else{
             return(InterceptedNotificationCode.OTHER_NOTIFICATIONS_CODE);

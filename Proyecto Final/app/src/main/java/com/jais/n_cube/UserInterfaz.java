@@ -1,5 +1,6 @@
 package com.jais.n_cube;
 
+import android.app.Notification;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -64,6 +65,7 @@ public class UserInterfaz extends AppCompatActivity {
         IdDesconectar =  findViewById(R.id.IdDesconectar);
         IdBufferIn = findViewById(R.id.IdBufferIn);
         btnColor = findViewById(R.id.btnColor);
+
 
 
         btnColor.setOnClickListener(new View.OnClickListener() {
@@ -250,37 +252,33 @@ public class UserInterfaz extends AppCompatActivity {
     {
         message = event.getMessage();
 
-        if(message.equals("FB"))
+
+        if(message.equals("WP"))
         {
-             MyConexionBT.write("D");
-            Toast.makeText(this, "FB", Toast.LENGTH_SHORT).show();
+            MyConexionBT.write("A");
+            Toast.makeText(this, "WP", Toast.LENGTH_SHORT).show();
         }
         if(message.equals("IG"))
         {
              MyConexionBT.write("B");
             Toast.makeText(this, "IG", Toast.LENGTH_SHORT).show();
         }
-        if(message.equals("WP"))
+
+        if(message.equals("YT"))
         {
-             MyConexionBT.write("A");
-            Toast.makeText(this, "WP", Toast.LENGTH_SHORT).show();
+             MyConexionBT.write("C");
+            Toast.makeText(this, "YT", Toast.LENGTH_SHORT).show();
+        }
+        if(message.equals("FB"))
+        {
+              MyConexionBT.write("D");
+             Toast.makeText(this, "FB", Toast.LENGTH_SHORT).show();
         }
         if(message.equals("O"))
         {
-             MyConexionBT.write("Y");
-            Toast.makeText(this, "O", Toast.LENGTH_SHORT).show();
+              MyConexionBT.write("");
+             Toast.makeText(this, "O", Toast.LENGTH_SHORT).show();
         }
-
-
-
-
-
-
-
-
-
-
-
 
     }
 
@@ -291,6 +289,9 @@ public class UserInterfaz extends AppCompatActivity {
     }
 
 
+
+
+Notification.deleteIntent();
 }
 
 
