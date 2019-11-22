@@ -65,17 +65,14 @@ public class UserInterfaz extends AppCompatActivity {
         IdBufferIn = findViewById(R.id.IdBufferIn);
         btnColor = findViewById(R.id.btnColor);
 
-       final BottomSheet.Builder builder = new BottomSheet.Builder(this);
 
         btnColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                builder.setTitle("My title");
-
+                Intent intent = new Intent(UserInterfaz.this, Color.class);
+                startActivity(intent);
             }
-    });
-
+        });
 
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {
