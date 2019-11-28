@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,14 +55,14 @@ DispositivosBT extends AppCompatActivity {
     private BluetoothAdapter mBtAdapter;
     private ArrayAdapter<String> mPairedDevicesArrayAdapter;
 
-    private String message;
+    private Button btnCBT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dispositivos_bt);
 
-
+        btnCBT = findViewById(R.id.btnCBT);
 
         // If the user did not turn the notification listener service on we prompt him to do so
         if(!isNotificationServiceEnabled()){
@@ -74,6 +75,23 @@ DispositivosBT extends AppCompatActivity {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("com.jais.n_cube.NotificationListenerExampleService");
         registerReceiver(imageChangeBroadcastReceiver,intentFilter);
+
+        btnCBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                    final Intent intent = new Intent(Intent.ACTION_MAIN, null);
+                    intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                ComponentName cn = new ComponentName("com.android.settings",
+                        "com.android.settings.bluetooth.BluetoothSettings");
+                    intent.setComponent(cn);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity( intent);
+            }
+        });
+
+
+
     }
 
 
@@ -154,7 +172,6 @@ DispositivosBT extends AppCompatActivity {
         }
     }
 
-
     /**
      * Is Notification Service Enabled.
      * Verifies if the notification listener service is enabled.
@@ -219,9 +236,6 @@ DispositivosBT extends AppCompatActivity {
         return(alertDialogBuilder.create());
     }
 
-
-
-
     // Configura un (on-click) para la lista
     private AdapterView.OnItemClickListener mDeviceClickListener = new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView av, View v, int arg2, long arg3) {
@@ -248,19 +262,11 @@ DispositivosBT extends AppCompatActivity {
                 Log.d(TAG, "...Bluetooth Activado...");
             } else {
                 //Solicita al usuario que active Bluetooth
-                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                Intent enableBtIntent = new Intent(getApplicationContext(),Color.class);
                 startActivityForResult(enableBtIntent, 1);
-
             }
         }
     }
-
-
-
-
-
-
-
 }
 
 

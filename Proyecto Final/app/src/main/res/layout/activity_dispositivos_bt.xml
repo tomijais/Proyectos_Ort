@@ -6,6 +6,29 @@
     android:layout_height="match_parent"
     tools:context="com.jais.n_cube.DispositivosBT">
 
+    <Button
+        android:id="@+id/btnCBT"
+        android:layout_width="161dp"
+        android:layout_height="76dp"
+        android:layout_below="@+id/IdLista"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="66dp"
+        android:text="Agregar Nuevo Dispositivo" />
+
+    <ListView
+        android:id="@+id/IdLista"
+        android:layout_width="match_parent"
+        android:layout_height="490dp"
+        android:layout_below="@+id/IdTitulo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:footerDividersEnabled="false" />
+
     <TextView
         android:id="@+id/IdTitulo"
         android:layout_width="match_parent"
@@ -15,13 +38,4 @@
         android:text="DISPOSITIVOS VINCULADOS"
         android:textAlignment="center"
         android:textSize="18sp" />
-
-    <ListView
-        android:id="@+id/IdLista"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/IdTitulo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:footerDividersEnabled="false" />
 </RelativeLayout>

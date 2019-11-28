@@ -66,8 +66,6 @@ public class UserInterfaz extends AppCompatActivity {
         IdBufferIn = findViewById(R.id.IdBufferIn);
         btnColor = findViewById(R.id.btnColor);
 
-
-
         btnColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -241,17 +239,16 @@ public class UserInterfaz extends AppCompatActivity {
 
     @Override
     public void onStart() {
+
         super.onStart();
         EventBus.getDefault().register(this);
 
     }
 
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(Message event)
     {
         message = event.getMessage();
-
 
         if(message.equals("WP"))
         {
@@ -260,26 +257,25 @@ public class UserInterfaz extends AppCompatActivity {
         }
         if(message.equals("IG"))
         {
-             MyConexionBT.write("B");
+            MyConexionBT.write("B");
             Toast.makeText(this, "IG", Toast.LENGTH_SHORT).show();
         }
 
         if(message.equals("YT"))
         {
-             MyConexionBT.write("C");
+            MyConexionBT.write("C");
             Toast.makeText(this, "YT", Toast.LENGTH_SHORT).show();
         }
         if(message.equals("FB"))
         {
-              MyConexionBT.write("D");
-             Toast.makeText(this, "FB", Toast.LENGTH_SHORT).show();
+            MyConexionBT.write("D");
+            Toast.makeText(this, "FB", Toast.LENGTH_SHORT).show();
         }
         if(message.equals("O"))
         {
-              MyConexionBT.write("");
-             Toast.makeText(this, "O", Toast.LENGTH_SHORT).show();
+            MyConexionBT.write("");
+            Toast.makeText(this, "O", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
@@ -287,11 +283,7 @@ public class UserInterfaz extends AppCompatActivity {
         super.onStop();
         EventBus.getDefault().unregister(this);
     }
-
-
-
-
-Notification.deleteIntent();
+//Notification.deleteIntent();
 }
 
 
