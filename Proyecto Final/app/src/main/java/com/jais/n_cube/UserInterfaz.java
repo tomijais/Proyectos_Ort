@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +31,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
+import yuku.ambilwarna.AmbilWarnaDialog;
+
 public class UserInterfaz extends AppCompatActivity {
 
     //1)
@@ -46,13 +50,12 @@ public class UserInterfaz extends AppCompatActivity {
     // String para la direccion MAC
     private static String address = null;
     //-------------------------------------------
-
+    ConstraintLayout mLayout;
+    int mDefauldColor;
     //-------------------------------------------
     public String message;
-    public String instagram;
-    public String whatsapp;
-    public String facebook;
-    public String otras;
+    //-------------------------------------------
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,36 +63,20 @@ public class UserInterfaz extends AppCompatActivity {
         setContentView(R.layout.activity_user_interfaz);
         //2)
         //Enlaza los controles con sus respectivas vistas
-        IdEncender =  findViewById(R.id.IdEncender);
-        IdApagar =  findViewById(R.id.IdApagar);
         IdDesconectar =  findViewById(R.id.IdDesconectar);
-        IdBufferIn = findViewById(R.id.IdBufferIn);
         btnColor = findViewById(R.id.btnColor);
+
+        Toast.makeText(this, "Ya puede dejar la app en segundo plano", Toast.LENGTH_SHORT).show();
 
         btnColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UserInterfaz.this, Color.class);
-                startActivity(intent);
+
+                openColorPicker();
             }
         });
 
-        bluetoothIn = new Handler() {
-            public void handleMessage(android.os.Message msg) {
-                if (msg.what == handlerState) {
-                    String readMessage = (String) msg.obj;
-                    DataStringIN.append(readMessage);
 
-                    int endOfLineIndex = DataStringIN.indexOf("#");
-
-                    if (endOfLineIndex > 0) {
-                        String dataInPrint = DataStringIN.substring(0, endOfLineIndex);
-                        IdBufferIn.setText("Dato: " + dataInPrint);//<-<- PARTE A MODIFICAR >->->
-                        DataStringIN.delete(0, DataStringIN.length());
-                    }
-                }
-            }
-        };
 
         btAdapter = BluetoothAdapter.getDefaultAdapter(); // get Bluetooth adapter
         VerificarEstadoBT();
@@ -97,18 +84,7 @@ public class UserInterfaz extends AppCompatActivity {
         // Configuracion onClick listeners para los botones
         // para indicar que se realizara cuando se detecte
         // el evento de Click
-        IdEncender.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)
-            {
-                MyConexionBT.write("A");
-            }
-        });
 
-        IdApagar.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                MyConexionBT.write("B");
-            }
-        });
 
         IdDesconectar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -284,6 +260,20 @@ public class UserInterfaz extends AppCompatActivity {
         EventBus.getDefault().unregister(this);
     }
 //Notification.deleteIntent();
+
+    public void openColorPicker()
+    {
+        AmbilWarnaDialog colorPicker = new AmbilWarnaDialog((this), mDefauldColor, new AmbilWarnaDialog.OnAmbilWarnaListener() {
+            @Override
+            public void onCancel(AmbilWarnaDialog dialog) {
+            }
+            @Override
+            public void onOk(AmbilWarnaDialog dialog, int color) {
+           mDefauldColor = color;
+            }
+        });
+        colorPicker.show();
+    }
 }
 
 

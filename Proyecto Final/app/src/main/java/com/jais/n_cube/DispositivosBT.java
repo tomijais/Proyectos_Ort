@@ -262,7 +262,7 @@ DispositivosBT extends AppCompatActivity {
                 Log.d(TAG, "...Bluetooth Activado...");
             } else {
                 //Solicita al usuario que active Bluetooth
-                Intent enableBtIntent = new Intent(getApplicationContext(),Color.class);
+                Intent enableBtIntent = new Intent(getApplicationContext(),UserInterfaz.class);
                 startActivityForResult(enableBtIntent, 1);
             }
         }

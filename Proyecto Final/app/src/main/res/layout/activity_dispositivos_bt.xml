@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,11 +14,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="61dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginBottom="66dp"
-        android:text="Agregar Nuevo Dispositivo" />
+        android:text="Agregar Nuevo Dispositivo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IdLista" />
 
     <ListView
         android:id="@+id/IdLista"
@@ -26,8 +26,10 @@
         android:layout_height="490dp"
         android:layout_below="@+id/IdTitulo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:footerDividersEnabled="false" />
+        android:layout_marginTop="24dp"
+        android:footerDividersEnabled="false"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/IdTitulo"
@@ -37,5 +39,6 @@
         android:layout_centerHorizontal="true"
         android:text="DISPOSITIVOS VINCULADOS"
         android:textAlignment="center"
-        android:textSize="18sp" />
-</RelativeLayout>
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
