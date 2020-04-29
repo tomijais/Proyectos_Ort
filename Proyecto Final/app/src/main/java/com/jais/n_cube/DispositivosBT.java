@@ -144,30 +144,18 @@ DispositivosBT extends AppCompatActivity {
         switch(notificationCode){
             case NotificationListenerExampleService.InterceptedNotificationCode.FACEBOOK_CODE:
                 EventBus.getDefault().post(new Message("FB"));
-
-
                 break;
             case NotificationListenerExampleService.InterceptedNotificationCode.INSTAGRAM_CODE:
                 EventBus.getDefault().post(new Message("IG"));
-
-
                 break;
             case NotificationListenerExampleService.InterceptedNotificationCode.WHATSAPP_CODE:
-
                 EventBus.getDefault().post(new Message("WP"));
-
-
                 break;
-                case NotificationListenerExampleService.InterceptedNotificationCode.YOUTUBE_CODE:
-
+            case NotificationListenerExampleService.InterceptedNotificationCode.YOUTUBE_CODE:
                 EventBus.getDefault().post(new Message("YT"));
-
-
                 break;
             case NotificationListenerExampleService.InterceptedNotificationCode.OTHER_NOTIFICATIONS_CODE:
                 EventBus.getDefault().post(new Message("O"));
-
-
                 break;
         }
     }
